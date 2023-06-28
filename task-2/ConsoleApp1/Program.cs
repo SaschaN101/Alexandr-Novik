@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 
 namespace ConsoleApp1
 {
@@ -32,7 +33,7 @@ namespace ConsoleApp1
 
                          Console.WriteLine("Введите bool");
                         bool boolStr = Boolean.Parse(Console.ReadLine());      
-                        Console.WriteLine(boolStr);*/
+                        Console.WriteLine(boolStr);
 
 
             // приведение типов
@@ -62,12 +63,38 @@ namespace ConsoleApp1
             Console.WriteLine(s_ushort1);
             ushort s_ushort2 = ushort.Parse(str1);
             Console.WriteLine(s_ushort2);
+            Console.WriteLine("Введите число типа int");
+            var x = Convert.ToInt32(Console.ReadLine());
+            var intX = new[] {1, 5, 15 };
+            var stringX = new[] { "Hello", "World", "7"};
+            int intXnIndex2 = intX[2];
+            string stringXIndex0 = stringX[0];
+            Console.WriteLine(intXnIndex2 + " _ " + stringXIndex0);*/
 
 
 
+            string? stringNullable = null;
+            void IsNull(string? obj)
+            {
+                if (obj == null)
+                {
+                    Console.WriteLine("stringNullable = null");
+
+                } else Console.WriteLine($"stringNullable = {obj}");
+            }
+            IsNull(stringNullable);
+            var test = "22";
+            stringNullable = "abcd";
+            IsNull(stringNullable);
+            IsNull(test);
+
+
+            // test = 22; - за переменной test закреплен тип string, который не может измениться до конца существования переменной test на другой тип
+
+            Console.ReadLine();
 
         }
-
+        
 
             
 
