@@ -78,16 +78,25 @@ namespace ConsoleApp1
 
 
 
-            /* string ? stringNullable = null;
+            string ? stringNullable = null;
 
             Console.WriteLine(stringNullable);
             void IsNull(string? obj)
             {
-                if (obj == null)
+                try
                 {
-                    Console.WriteLine("stringNullable = null");
+                    if (obj == null)
+                    {
+                        Console.WriteLine("stringNullable = null");
+                        throw new Exception("!!!Exception: NullReferenceException");
 
-                } else Console.WriteLine($"stringNullable = {obj}");
+                    }
+                    Console.WriteLine($"stringNullable = {obj}");
+                }
+                catch (Exception ex) 
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
             IsNull(stringNullable);
             var test = "22";
@@ -98,7 +107,7 @@ namespace ConsoleApp1
 
             // test = 22; - за переменной test закреплен тип string, который не может измениться до конца существования переменной test на другой тип
             int? val = null;
-            Console.WriteLine(val);*/
+            Console.WriteLine(val);
 
 
 
@@ -124,10 +133,31 @@ namespace ConsoleApp1
             Console.WriteLine("str 5 = " + str5);
 
             //метод CopyTo: копирует часть строки, начиная с определенного индекса в массив
-            char[] arr = new char[str4.Length];
-            str4.CopyTo(0, arr, 0, str4.Length);
-            Console.WriteLine();
-            foreach (char c in arr) { Console.Write(c); }
+            try
+            {
+             
+                char[] arr = new char[str4.Length];
+                Console.WriteLine("Введите начальныйй индекс");
+                int _idexStart = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Введите конечный индекс");
+                int _idexEnd = Convert.ToInt32(Console.ReadLine());
+              
+                if (_idexEnd < _idexStart)
+                {
+                    
+                    throw new Exception("!!! ERRORR!!!!!!");
+                }
+                  str4.CopyTo(_idexStart, arr, _idexEnd, str4.Length);
+                Console.WriteLine();
+                foreach (char c in arr) { Console.Write(c); }
+            }
+            catch(ArgumentException ex) {
+                Console.WriteLine("ArgumentException"); 
+                Console.WriteLine(ex.Message); }
+            catch(Exception ex)
+            { Console.WriteLine(ex.Message); }
+
+
 
             // метод Insert: вставляет в строку подстроку
             string str6 = str4.Insert(3, str5);
@@ -140,12 +170,27 @@ namespace ConsoleApp1
             string str8 = "";
             Console.WriteLine("Введите символ, с которого нужно скопировать строку");
             int indexStart = Int32.Parse(Console.ReadLine());
-            Console.WriteLine("Введите количество символов для копирования");
-            int countIndex = Int32.Parse(Console.ReadLine());
-            if (indexStart > str7.Length || countIndex > str7.Length || indexStart > countIndex)
-                Console.WriteLine("ERROR");
-            else
-            Console.WriteLine(str8 =  str7.Substring(indexStart-1, countIndex-1));
+            
+            
+            Console.WriteLine("Введите количество символов для копирования");            
+            
+            try
+            {
+                int countIndex = Int32.Parse(Console.ReadLine());
+                if (indexStart > str7.Length || countIndex > str7.Length || indexStart > countIndex)
+                {
+                    
+                    Console.WriteLine("ERROR");
+                    throw new Exception("Error");
+                }
+               Console.WriteLine(str8 =  str7.Substring(indexStart-1, countIndex-1)); 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            };
+               
+             
             
             
 
