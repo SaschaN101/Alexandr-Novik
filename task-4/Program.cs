@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -67,8 +68,11 @@ namespace Homework_4
             {
                 try
                 {
-                    if (str.Length != 13)
+                    string substring = "+375";
+                    int indexOfSubstring = str.IndexOf(substring);
+                    if (str.Length != 13 || indexOfSubstring != 0)
                     { throw new Exception("Is not phone number"); }
+                    
                 }
                 catch (Exception ex) { Console.WriteLine(ex.Message); }
             };
