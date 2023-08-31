@@ -20,6 +20,18 @@ for (int i = 0; i <= array.GetUpperBound(0); i++)
         };
 Console.WriteLine($"maxValue array = {maxValue}, minValue array = {minValue}");
 
+Console.WriteLine("Вызов Exception");
+
+try
+{
+    array2[4][3] = 25;
+    Console.WriteLine(array2[4][3]);
+}
+catch (Exception ex) 
+{
+    Console.WriteLine(ex.Message);
+}
+
 Console.WriteLine();
 Console.WriteLine("зубчатый массив"); 
 int minValue2 = int.MaxValue;

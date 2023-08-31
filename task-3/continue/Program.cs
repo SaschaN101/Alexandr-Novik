@@ -30,6 +30,13 @@ namespace Homework3
             printList(listInt);
 
 
+            try
+            {
+                Console.WriteLine(listInt[7]);
+                throw new Exception("!!!Индекс элемента находится вне диапазона допустимых значений!!!");
+            } catch (Exception ex) { Console.WriteLine(ex.Message); }
+
+
             Console.WriteLine(listInt[0]);
 
             listInt.Clear();
@@ -52,11 +59,23 @@ namespace Homework3
             stackInt.Push(7);
             printStack(stackInt);
 
+
             List<int> listInt2 = new List<int> { 1, 2, 3 };
             Stack<int> stackInt2 = new Stack<int>(listInt2);
             printStack(stackInt2);
             Console.WriteLine("pop: " + stackInt.Pop());
             printStack(stackInt);
+
+            Console.WriteLine("Вызов исключения");
+            try
+            {
+                stackInt.Pop();
+                stackInt.Pop();
+                stackInt.Pop();
+                throw new Exception();
+
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
 
             Console.WriteLine("peek: " + stackInt2.Peek());
             printStack(stackInt2);
@@ -81,6 +100,23 @@ namespace Homework3
             printDictionary(dictionary1);
 
             Console.WriteLine("--------- b ----------");
+
+            Console.WriteLine("Коллекция List<List<int>>");
+
+
+            List<List<int>> listListInt = new List<List<int>>() { new List<int> { 1, 2, 3 }, new List<int> { 10, 11, 12 } };
+            for (int i = 0; i < listListInt.Count; i++)
+            {
+                for (int j = 0; j < listListInt[i].Count; j++)
+                {
+                    Console.Write(listListInt[i][j].ToString() + " ");
+
+                }
+                Console.WriteLine();
+
+            }
+
+
             List<List<int>> matrix = new List<List<int>>() { new List<int> { 1, 2, 3 }, new List<int> { 4, 5, 6 }, new List<int> { 7, 8, 9 } };
             matrix.Add(new List<int> { 2, 5, 8 });
 
@@ -88,6 +124,7 @@ namespace Homework3
             {
                 printList(item);
             }
+
 
             Console.WriteLine("--------- Task 3 ----------");
             Console.WriteLine("--------- a ----------");
@@ -108,10 +145,10 @@ namespace Homework3
                     {"spring", new List<string> { "march", "april", "may" } }, {"summer",  new List<string>{ "june", "july", "august" } }, {"autumn",new List<string>{ "september", "october", "november" } } };
 
 
-            
+
 
             var winterSummerMonths = from season in seasonOfYear where season.Key == "winter" || season.Key == "summer" select season.Value;
-           
+
             foreach (var item in winterSummerMonths)
             {
                 printList(item);
@@ -124,9 +161,11 @@ namespace Homework3
             var countSomeMonths = (from month in months where month.Contains("u") && month.Length > 3 select month).Count();
             print(someMonts);
             Console.WriteLine(countSomeMonths);
-            
+
             Console.WriteLine("--------- b ----------");
 
+          
+            
 
             Console.ReadLine();
 

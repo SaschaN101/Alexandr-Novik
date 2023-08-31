@@ -31,12 +31,24 @@ namespace Homework_4
                 string buffer = "";
                 for (int i = 0; i < str.Length; i++)
                 {
-                    if ((char)str[i] < '0' || (char)str[i] > '9')
+                    try 
+                    {
+                        if ((char)str[i] == '#')
+                        {   
+                            throw new Exception();
+                        } else if ((char)str[i] < '0' || (char)str[i] > '9')
                         buffer += str[i];
+                      
+                    } catch (Exception ex){ Console.WriteLine(ex.Message); }
+
+                   
                 }
                 return buffer;
             }
 
+            Console.WriteLine("Введите строку с цифрами. Вызов исключения на символ #");
+            string strNumber = Console.ReadLine();
+            RemoveNumber(strNumber);
 
             string RemoveSimbol(string str)
             {
@@ -49,6 +61,18 @@ namespace Homework_4
                 return buffer;
             }
 
+            Console.WriteLine("проверка на количество символов в строке");
+            string strPhoneNumber = Console.ReadLine();
+            void IsPhoneNomber(string str)
+            {
+                try
+                {
+                    if (str.Length != 13)
+                    { throw new Exception("Is not phone number"); }
+                }
+                catch (Exception ex) { Console.WriteLine(ex.Message); }
+            };
+            IsPhoneNomber(strPhoneNumber);
             string RemoveSimbol2(string str, char chDel, char chAdd)
             {
                 string buffer = "";
