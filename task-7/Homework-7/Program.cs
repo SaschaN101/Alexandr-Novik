@@ -32,6 +32,9 @@ namespace Homework_7
             petrovOrder.AddProduct(bread2);
             Console.WriteLine(petrovOrder.ToString());
             Console.WriteLine(petrovOrder.SumPrice());
+            Console.WriteLine(bread2.Equals(bread2));
+            Console.WriteLine(bread1.Equals(bread2));
+            Console.WriteLine(bread1.Equals(bread));
 
             Console.ReadLine();
         }
