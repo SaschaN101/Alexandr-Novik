@@ -15,6 +15,7 @@ namespace Homework_6
             var order3 = new Order("Сидр", "Сидоров", "огурец", 3);
             Console.WriteLine(Equals(order1, order2)); // сравнение объектов
             Console.WriteLine(Equals(order3, order2));
+            Console.WriteLine($"Id заказ "order1.Id);
             Console.WriteLine(order1.GetType()); // проверка типа созданного объекта
             List<Order> orders = new List<Order>();
             orders.Add(order1);
