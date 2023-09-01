@@ -9,6 +9,7 @@ namespace Homework_7
     internal class DiscountProduct : Product
     {
         public int currentDiscount;
+       
         
         public int CurrentDiscount 
         {
@@ -17,7 +18,7 @@ namespace Homework_7
         }
         public override double PriceOfProduct
         {
-            get { return this.PriceOfProduct * (100 - currentDiscount) / 100; }
+            get { return base.PriceOfProduct * (100 - currentDiscount) / 100; }
         }
         public DiscountProduct(string productName, string discriptionOfProduct, double priceOfProduct, int currentDiscount) : 
             base(productName, discriptionOfProduct, priceOfProduct)

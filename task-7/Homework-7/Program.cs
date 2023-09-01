@@ -24,13 +24,14 @@ namespace Homework_7
             Console.WriteLine(petrovOrder.ToString());
             Console.WriteLine(petrov.ToString());
 
-
-            DiscountProduct bread2 = new DiscountProduct("bread", "Narochanski, black", 2.3, 15);
-            
-            
+            Product bread1 = new Product("bread", "Narochanski, black", 2.3);
+            petrovOrder.AddProduct(bread1);
+            Console.WriteLine("Сумма без скидки = " + petrovOrder.SumPrice() + " " + petrovOrder.ToString());
+            petrovOrder.RemoveProduct(bread1);
+            DiscountProduct bread2 = new DiscountProduct("bread", "Narochanski, black", 2.3, 15);                       
             petrovOrder.AddProduct(bread2);
             Console.WriteLine(petrovOrder.ToString());
-            
+            Console.WriteLine(petrovOrder.SumPrice());
 
             Console.ReadLine();
         }
