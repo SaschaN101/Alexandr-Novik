@@ -54,10 +54,22 @@ namespace Homework_8
                     bool result = double.TryParse( Console.ReadLine(), out productPrise);
                     if (result) { InMemoryDatabase.AddProduct(new Product(productName, productDiscription, productPrise)); } else { Console.WriteLine("Стоимость продукта не введена"); }
                    
-                } else if (comand == "exit")
-                        {
+                }
+                if (comand == "addOrder")
+                {
+                    Console.WriteLine("Введите Ваш ID");
+                    int ourId = int.Parse(Console.ReadLine());
+                    User aaaaa = dataBase.showUser().FirstOrDefault(User => User.id == ourId);
+                    var ourNewOrder = new Order(aaaaa);
+                    Console.WriteLine("Вы можете выбрать товар из списка");
+                    int productId = int.Parse(Console.ReadLine());
+                    Product product = InMemoryDatabase.showProduct().FirstOrDefault(Product => Product.id == productId);
+                    ourNewOrder.AddProduct(product);
+                }
+                else if (comand == "exit")
+                {
                     return;
-                        }
+                }
             }
 
 
