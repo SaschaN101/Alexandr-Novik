@@ -12,7 +12,8 @@ namespace Homework_8
         public int id;
         static int counter;
 
-        static int Counter { get;  set; }
+        public int Id { get; private set; }
+        //static int Counter { get;  set; }
 
         public BaseModel()
         {
@@ -23,10 +24,13 @@ namespace Homework_8
         static BaseModel()
         {
             Random Rand = new Random();
-          counter = Rand.Next();
+            counter = Rand.Next();
         }
+       // protected BaseModel()
+        //{
+        //   Id = counter;
+        //}
 
-      
 
     }
     

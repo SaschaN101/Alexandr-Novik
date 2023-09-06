@@ -27,7 +27,7 @@ namespace Homework_8
             get => priceOfProduct;
             set { if (value > 0) priceOfProduct = value; }
         }
-        public Product(string productName, string discriptionOfProduct, double priceOfProduct)
+        public Product(string productName, string discriptionOfProduct = "", double priceOfProduct = 10)
         {
             this.ProductName = productName;
             this.DiscriptionOfProduct = discriptionOfProduct;
@@ -35,18 +35,19 @@ namespace Homework_8
         }
         public override string ToString()
         {
-            return $"{productName} {discriptionOfProduct} {priceOfProduct} ";
+            return $"{id.ToString()} {productName} {discriptionOfProduct} {priceOfProduct} ";
         }
         public override bool Equals(object prod)
         {
-            Product _prod = (Product)prod;
+           Product _prod = (Product)prod;
             bool x = this.productName == _prod.productName && this.discriptionOfProduct == _prod.discriptionOfProduct && this.productName == _prod.productName;
             return x;
+           
         }
 
         public override int GetHashCode()
         {
-            return productName.GetHashCode() + discriptionOfProduct.GetHashCode() + priceOfProduct.GetHashCode();
+            return id.GetHashCode() + productName.GetHashCode() + discriptionOfProduct.GetHashCode() + priceOfProduct.GetHashCode();
         }
     }
 }

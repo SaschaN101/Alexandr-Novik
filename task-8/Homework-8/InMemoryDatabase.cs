@@ -6,16 +6,71 @@ using System.Threading.Tasks;
 
 namespace Homework_8
 {
-    internal static class InMemoryDatabase
+    internal  class InMemoryDatabase
     {
-        static List<User> users;
-        static List<Product> products;
-        static List<Order> orders;
+        public static List<User> users { get; }
+        static List<User> user;
+        static List<Product> product;
+        static List<Order> order;
 
-       // public static Product GetProducts()
-        //{ };
+        
+
+        static InMemoryDatabase()
+        { user = new List<User>()
+            {
+                new User ("Petr", "Petrov", "Petrovich", "Moscow"),
+                new User ("Nikita", "Pupkin", "Sergeevich", "Brest")
+            };
+          
+            
+            product = new List<Product>()
+            {
+                new Product("bread", "Borodinski, black", 2.5),
+                new Product("softdrink", "Koka-kola", 3.6)
+            };
 
 
+            order = new List<Order>()
+            {
+            };
+            foreach (var item in user) 
+            {
+                Order newOrder = new Order(item);
+                order.Add(newOrder);
+                foreach (var i in product)
+                { newOrder.AddProduct(i); }
 
+            }
+        }
+
+        public static void AddUser(User newUser)
+        {
+            user.Add(newUser);
+        }
+        public static void AddProduct(Product newProduct)
+        {
+            product.Add(newProduct);
+        }
+        public static void AddOrder(Order newOrder)
+        {
+            order.Add(newOrder);
+        }
+
+
+        public List<User> showUser()
+        {
+            List<User>copyUsers = new List<User>(user);
+            return copyUsers;
+        }
+        public static List<Product> showProduct()
+        {
+            List<Product> copyProduct = new List<Product>(product);
+            return copyProduct;
+        }
+        public List<Order> showOrder()
+        {
+            List<Order> copyOrder = new List<Order>(order);
+            return copyOrder;
+        }
     }
 }

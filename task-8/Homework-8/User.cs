@@ -58,7 +58,7 @@ namespace Homework_8
 
         }
 
-            public User(string firstNameCustomer, string lastNameCustomer, string surnameCustomer, string adressCustomer)
+            public User(string firstNameCustomer, string lastNameCustomer, string surnameCustomer = "", string adressCustomer = "")
             {
                 this.id = User.counter;
                 User.counter++;
