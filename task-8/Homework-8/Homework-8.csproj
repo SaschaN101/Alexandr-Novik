@@ -44,7 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseModel.cs" />
+    <Compile Include="DatabaseCreator.cs" />
     <Compile Include="DiscountProduct.cs" />
+    <Compile Include="IDatabase.cs" />
     <Compile Include="InMemoryDatabase.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="PhoneHelper.cs" />

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Homework_8
 {
-    internal  class InMemoryDatabase
+    internal  class InMemoryDatabase : IDatabase
     {
         public static List<User> users { get; }
         static List<User> user;
@@ -43,15 +43,15 @@ namespace Homework_8
             }
         }
 
-        public static void AddUser(User newUser)
+        public  void AddUser(User newUser)
         {
             user.Add(newUser);
         }
-        public static void AddProduct(Product newProduct)
+        public  void AddProduct(Product newProduct)
         {
             product.Add(newProduct);
         }
-        public static void AddOrder(Order newOrder)
+        public  void AddOrder(Order newOrder)
         {
             order.Add(newOrder);
         }
@@ -62,7 +62,7 @@ namespace Homework_8
             List<User>copyUsers = new List<User>(user);
             return copyUsers;
         }
-        public static List<Product> showProduct()
+        public  List<Product> showProduct()
         {
             List<Product> copyProduct = new List<Product>(product);
             return copyProduct;

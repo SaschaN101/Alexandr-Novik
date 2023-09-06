@@ -10,7 +10,7 @@ namespace Homework_8
     {
         static void Main(string[] args)
         {
-           InMemoryDatabase dataBase = new InMemoryDatabase();
+            IDatabase dataBase = DatabaseCreator.CreateDatabase();
             var ourUsers = dataBase.showUser();
             foreach (var user in ourUsers) 
             {
@@ -18,7 +18,7 @@ namespace Homework_8
             }
             Console.WriteLine();
 
-            var ourProducts = InMemoryDatabase.showProduct();
+            var ourProducts = dataBase.showProduct();
             for (int i = 0; i < ourProducts.Count(); i++)
             {
                 Console.WriteLine(ourProducts[i].ToString());
@@ -41,7 +41,7 @@ namespace Homework_8
                     string lastName = Console.ReadLine();
                     Console.WriteLine("Введите имя");
                     string name = Console.ReadLine();
-                    InMemoryDatabase.AddUser(new User(lastName, name));
+                    dataBase.AddUser(new User(lastName, name));
                 }
                 if (comand == "addProduct")
                 {
@@ -52,7 +52,7 @@ namespace Homework_8
                     Console.WriteLine("Введите стоимость продукта");
                     double productPrise;
                     bool result = double.TryParse( Console.ReadLine(), out productPrise);
-                    if (result) { InMemoryDatabase.AddProduct(new Product(productName, productDiscription, productPrise)); } else { Console.WriteLine("Стоимость продукта не введена"); }
+                    if (result) { dataBase.AddProduct(new Product(productName, productDiscription, productPrise)); } else { Console.WriteLine("Стоимость продукта не введена"); }
                    
                 }
                 if (comand == "addOrder")
@@ -63,7 +63,7 @@ namespace Homework_8
                     var ourNewOrder = new Order(aaaaa);
                     Console.WriteLine("Вы можете выбрать товар из списка");
                     int productId = int.Parse(Console.ReadLine());
-                    Product product = InMemoryDatabase.showProduct().FirstOrDefault(Product => Product.id == productId);
+                    Product product = dataBase.showProduct().FirstOrDefault(Product => Product.id == productId);
                     ourNewOrder.AddProduct(product);
                 }
                 else if (comand == "exit")
