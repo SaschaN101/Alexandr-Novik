@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Homework_8
 {
-    public interface IDatabase
+    internal interface IDatabase
     {
          void AddUser(User newUser);
          void AddProduct(Product newProduct);
